@@ -1,21 +1,21 @@
-How to Force HTTPS with Heroku server
-=====================================
-
-.. tip::
-
-   Heroku sets its own custom header to indicate the ORIGINAL scheme of the traffic, configure your .htaccess file as below:
+## How to Force HTTPS ON HEROKU SERVER (APACHE) 
 
 
-.. configuration-block::
-  <IfModule mod_rewrite.c>
-  
-     # SSL with Heroku 
-     RewriteEngine On
-     RewriteCond %{HTTP:X-Forwarded-Proto} !https
-     RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
-     
-     # Symfony 4
-     RewriteCond %{REQUEST_FILENAME} !-f
-     RewriteRule ^(.*)$ index.php [QSA,L]
+Heroku sets his own ORIGINAL ORIGINAL head of traffic, your HTACCESS file must be configured as below:
 
-  </IfModule>
+```
+<IfModule mod_rewrite.c>
+
+	# SSL with Heroku 
+	RewriteEngine On
+	RewriteCond %{HTTP:X-Forwarded-Proto} !https
+	RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+	# Symfony 4
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteRule ^(.*)$ index.php [QSA,L]
+
+
+</IfModule>
+        
+```
